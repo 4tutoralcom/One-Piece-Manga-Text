@@ -1,0 +1,16 @@
+services:
+  docling-manga:
+    build: .
+    container_name: docling-manga
+    volumes:
+      - ./hf-cache:/root/.cache/huggingface
+      - ./One Piece:/app/manga
+      - ./text:/app/text
+      - ./yolov8:/app/yolov8
+      - ./output:/app/output
+      - ./input:/app/input
+      - ./tmp/:/tmp/
+    restart: "no"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      YOLO_CONFIG_DIR: "/app/yolov8"
